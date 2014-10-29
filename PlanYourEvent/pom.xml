@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.letsdoit.planyourevent</groupId>
+	<artifactId>PlanYourEvent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>PlanYourEvent</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit-version>3.8.1</junit-version>
+		<spring-version>4.1.1.RELEASE</spring-version>
+		<planyourevent-version>0.0.1-SNAPSHOT</planyourevent-version>
+		<hibernate-version>4.3.6.Final</hibernate-version>
+		<hibernate-jpa-version>1.0.0.Final</hibernate-jpa-version>
+		<postgresql-version>9.1-901-1.jdbc4</postgresql-version>
+		<log4j-version>1.2.17</log4j-version>
+		<jstl-api-version>1.2</jstl-api-version>
+	</properties>
+
+	<modules>
+		<module>datalayer</module>
+		<module>businesslayer</module>
+		<module>commons</module>
+		<module>model</module>
+		<module>weblayer</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+
+			<!-- Web -->
+			<dependency>
+				<groupId>javax.servlet.jsp.jstl</groupId>
+				<artifactId>jstl-api</artifactId>
+				<version>${jstl-api-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl-api-version}</version>
+			</dependency>
+
+
+
+			<!-- Database -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.1-api</artifactId>
+				<version>${hibernate-jpa-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j-version}</version>
+			</dependency>
+
+
+			<!-- PlanYourEvent modules -->
+			<dependency>
+				<groupId>com.letsdoit.planyourevent</groupId>
+				<artifactId>commons</artifactId>
+				<version>${planyourevent-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.letsdoit.planyourevent</groupId>
+				<artifactId>model</artifactId>
+				<version>${planyourevent-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.letsdoit.planyourevent</groupId>
+				<artifactId>datalayer</artifactId>
+				<version>${planyourevent-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.letsdoit.planyourevent</groupId>
+				<artifactId>businesslayer</artifactId>
+				<version>${planyourevent-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.letsdoit.planyourevent</groupId>
+				<artifactId>weblayer</artifactId>
+				<version>${planyourevent-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<!-- Tomcat 7 has a different manager path - text - than other versions -->
+						<url>http://localhost:8080/manager/text</url>
+						<!-- Refer to the server settings in your ~/.m2/settings.xml -->
+						<server>TomcatServer</server>
+						<path>/PlanYourEven</path>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
