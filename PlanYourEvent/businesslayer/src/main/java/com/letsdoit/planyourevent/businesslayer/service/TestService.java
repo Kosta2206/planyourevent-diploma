@@ -10,5 +10,5 @@ public interface TestService {
 
 	public void create(TestEntity paramTestEntity) throws ServerException;
 
-	public List<TestDTO> getAllTests();
+	public List<TestDTO> getAllTests();//test git
 }
